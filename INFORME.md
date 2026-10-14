@@ -4,7 +4,7 @@
 
 # Universidad Nacional de Colombia
 
-### Sede Manizales — Facultad de Ingeniería y Arquitectura
+### Sede Manizales — Administración de sistemas informáticos
 
 ---
 
