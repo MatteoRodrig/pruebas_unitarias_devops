@@ -2,6 +2,7 @@
 
 ## Datos
 - **Nombre:** Julián Mateo Rodríguez Díaz
+- **Grupo:** 1
 - **Fecha de entrega:** 17 de octubre de 2026
 - **Curso:** Introducción a DevOps — Universidad Nacional de Colombia, Sede Manizales
 
@@ -66,6 +67,35 @@ El objetivo fue verificar no solo el cálculo correcto, sino también la consist
 
 ---
 
+### Módulo: csv_parser
+
+**¿Qué hace?**
+Contiene funciones para parsear y manipular archivos CSV: parsear una línea, leer CSV como lista, convertir a diccionarios, validar formato, extraer columnas, filtrar filas y contar filas/columnas.
+
+**Casos probados y por qué:**
+Se diseñaron 18 pruebas siguiendo la estructura AAA. Se usó `StringIO` para simular archivos CSV sin leer del disco (**mocking**), tal como pide el taller en el puntaje extra.
+
+Se probaron:
+1. **Casos normales:** CSV con cabecera, sin cabecera, múltiples filas.
+2. **Casos límite:** líneas vacías, columnas fuera de rango, filas con menos columnas que la cabecera.
+3. **Casos de error:** contenido vacío, comillas anidadas.
+
+**Bugs encontrados:**
+
+1. **`parse_csv_line` no maneja comillas correctamente**
+   - Cuando la línea tenía comillas (ej. `"Hola, mundo",otro`), el `split(',')` separaba incorrectamente. Devolvía `['"Hola', ' mundo"', 'otro']` en lugar de `['Hola, mundo', 'otro']`.
+   - **Corrección:** Usar `csv.reader` de la librería estándar: `reader = csv.reader(StringIO(linea)); return next(reader)`.
+
+2. **`csv_a_diccionarios` no maneja filas con diferente número de columnas**
+   - Si una fila tenía menos columnas que la cabecera, las columnas faltantes se ignoraban silenciosamente. Debería rellenar con `None`.
+   - **Corrección:** `fila_dict[cabecera] = fila[i] if i < len(fila) else None`.
+
+**Evidencia:**
+- ![Captura 6 — pruebas en rojo revelando bugs de csv_parser](capturas/Cap6error_3.png)
+- ![Captura 7 — pytest en verde con las 18 pruebas pasando](capturas/Cap7.png)
+
+---
+
 ## Tabla de bugs encontrados
 
 | Función | Entrada | Resultado erróneo | Resultado esperado | Corrección aplicada |
@@ -74,6 +104,8 @@ El objetivo fue verificar no solo el cálculo correcto, sino también la consist
 | `minimo` | `[5, 3, 8, 1, 9]` | `0` | `1` | Inicializar con `lista[0]` |
 | `calcular_precio_final` | `precio=100, impuesto=19, descuento=10` | `109.0` | `107.1` | Aplicar impuesto sobre precio con descuento |
 | `descuento_apilado` | `precio=100, descuentos=[60, 50]` | `ValueError` | `0` | Limitar con `min(sum(descuentos), 100)` |
+| `parse_csv_line` | `'"Hola, mundo",otro'` | `['"Hola', ' mundo"', 'otro']` | `['Hola, mundo', 'otro']` | Usar `csv.reader` |
+| `csv_a_diccionarios` | `"nombre,edad,ciudad\nAna,30"` | `{"nombre": "Ana", "edad": "30"}` | `{"nombre": "Ana", "edad": "30", "ciudad": None}` | Rellenar con `None` |
 
 ---
 
