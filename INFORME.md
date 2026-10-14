@@ -1,10 +1,49 @@
-# Informe — Taller de Pruebas Unitarias
+<div align="center">
 
-## Datos
-- **Nombre:** Julián Mateo Rodríguez Díaz
-- **Grupo:** 1
-- **Fecha de entrega:** 17 de octubre de 2026
-- **Curso:** Introducción a DevOps — Universidad Nacional de Colombia, Sede Manizales
+<img src="capturas/logo_unal.png" alt="Logo Universidad Nacional de Colombia" width="150"/>
+
+# Universidad Nacional de Colombia
+
+### Sede Manizales — Facultad de Ingeniería y Arquitectura
+
+---
+
+# Taller — Análisis y Mejora de Pruebas Unitarias
+
+**Curso:** Introducción a DevOps
+
+**Docente:** César Augusto Palacios Alarcón
+
+---
+
+**Estudiante:** Julián Mateo Rodríguez Díaz
+
+**Grupo:** 1
+
+**Fecha de entrega:** 17 de octubre de 2026
+
+---
+
+</div>
+
+## Tabla de contenido
+
+1. [Introducción](#introducción)
+2. [Análisis por módulo](#análisis-por-módulo)
+   - [Calculadora](#módulo-calculadora)
+   - [Descuentos](#módulo-descuentos)
+   - [CSV Parser](#módulo-csv_parser)
+3. [Tabla de bugs encontrados](#tabla-de-bugs-encontrados)
+4. [Cobertura](#cobertura)
+5. [Reflexión final](#reflexión-final)
+
+---
+
+## Introducción
+
+Este informe presenta el trabajo realizado en el taller de pruebas unitarias del curso Introducción a DevOps. El objetivo fue escribir pruebas con estructura AAA (Arrange, Act, Assert) para al menos tres módulos del proyecto, encontrar bugs ocultos en el código, corregirlos, medir la cobertura de las pruebas y documentar todo el proceso.
+
+El trabajo se realizó sobre un fork del repositorio `cesarpalacios/pruebas_unitarias_devops`, siguiendo el flujo típico de DevOps: escribir pruebas, ejecutarlas, corregir errores y dejar evidencia en el repositorio.
 
 ---
 
@@ -145,3 +184,11 @@ La cobertura mide qué porcentaje del código se ejecutó durante las pruebas, p
 Aprendí que escribir pruebas unitarias es una forma muy útil de encontrar bugs que uno no ve a simple vista. Muchas veces, al escribir la prueba, uno se da cuenta de que el código no hace lo que uno creía. También aprendí a usar la estructura AAA para organizar las pruebas, y a usar `mocking` con `StringIO` para no depender de archivos reales.
 
 Por último, entendí que el flujo de DevOps no se trata solo de escribir código, sino de probarlo, medirlo y documentarlo. Este taller me hizo ver que las pruebas son parte del trabajo, no algo aparte.
+
+---
+
+<div align="center">
+
+**Fin del informe**
+
+</div>
